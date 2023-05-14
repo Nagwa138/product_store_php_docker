@@ -21,7 +21,7 @@
                 <h3 class="col-3">Product Add </h3>
                 <div class="col-3 d-flex justify-content-between align-items-center">
                     <button @click="submitForm" class="btn btn-sm btn-primary">SAVE </button>
-                    <a href="" class="btn btn-sm btn-danger">CANCEL</a>
+                    <a onclick="history.back()" class="btn btn-sm btn-danger">CANCEL</a>
                 </div>
             </div>
             <div class="row">
@@ -254,7 +254,7 @@
 
                 axios({
                     method: 'post',
-                    url: './add_product_back.php',
+                    url: './add_product_back',
                     data: data
                 }).then(response => {
                     if(!response.data.success)
@@ -266,6 +266,7 @@
                         this.success_message = response.data.message;
                         window.location = document.referrer;
                     }
+                    console.log(response.data)
                 }).catch(function(error) {
                     this.error_message = 'Sorry, error occurred!';
                     this.success_message = '';

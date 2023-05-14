@@ -10,7 +10,7 @@ class Database {
 
     public function __construct()
     {
-        $this->connection = new PDO("mysql:host=db;dbname=shop", "root", "secret");
+        $this->connection = new PDO("mysql:host=db;dbname=scandiweb", "root", "secret");
         $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     }
@@ -117,10 +117,10 @@ class Database {
 
     public function delete(string $table, array $ids)
     {
-        $sql = "DELETE FROM $table WHERE id IN (:ids)";
+        $sql = "DELETE FROM $table WHERE id IN (" . implode(', ', $ids) . ")";
 
         $result = $this->connection->prepare($sql);
 
-        $result->execute(['ids' => implode(', ', $ids)]);
+        $result->execute();
     }
 }

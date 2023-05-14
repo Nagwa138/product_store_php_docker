@@ -8,4 +8,6 @@ CREATE TABLE `products` (
                           `data` LONGTEXT NULL,
                           PRIMARY KEY (`id`),
                           UNIQUE (`sku`)
-) ;
+);
+
+INSERT INTO products (sku, name, price, data) VALUES ('Abc', 'Book', 239, '{"weight":50}'), ('Efg', 'DVD', 765, '{"size":88}');

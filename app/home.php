@@ -20,7 +20,7 @@
         <div class="row justify-content-between pt-3 align-items-center">
             <h3 class="col-3">Product List </h3>
             <div class="col-3 d-flex justify-content-between align-items-center">
-                <a href="../add_product.php" class="btn btn-sm btn-primary">ADD </a>
+                <a href="add_product" class="btn btn-sm btn-primary">ADD </a>
                 <button @click="deleteProducts" class="btn btn-sm btn-danger">MASS DELETE </button>
             </div>
         </div>
@@ -87,7 +87,7 @@
                 } else {
                     axios({
                         method: 'post',
-                        url: './mass_delete_products.php',
+                        url: './mass_delete',
                         data: this.checkedProducts
                     }).then(response => {
                         this.error_message = '';
@@ -102,7 +102,7 @@
             retrieveProducts: function (){
                 axios({
                     method: 'get',
-                    url: './list_products.php',
+                    url: './list_products',
                 }).then(response => {
                     this.products = response.data;
                 }).catch(function(error) {});
